@@ -10,3 +10,10 @@ This fork includes several improvements:
 - Changed the default number of rows in count() from 100 to 100,000
 - Changed the order of arguments on the count() function for backwards compatibility
 
+## The parse() method
+
+Normally SimpleCassie returns raw Thrift responses from get() and slice() queries. The new `parse()` method converts Thrift responses into PHP arrays.
+
+  $result = $cassie->parse($cassie->keyspace('test')->cf('test_cf')->key('foo')->get());
+  echo "timestamp: " . $result['timestamp'] . "\n";
+  echo "value:" . $result['value'];
